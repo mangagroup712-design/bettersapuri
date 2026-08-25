@@ -1,11 +1,20 @@
 # about
 スタディサプリをキーボードで利用可能にする便利な拡張機能です。Chromium系ブラウザ向け。
 数字キー１，２，３，４．．．で選択。答えの確定と次の問題に遷移するときはEnterで反応するようにしてあります。この拡張機能は問題が選択肢の場合のみ機能します。
+
 # 利用方法
 ## ①ローカルにファイルをクローンする
 直接ダウンロードするか、gitがインストールされている場合は ```git clone https://github.com/mangagroup712-design/bettersapuri.git``` を実行してローカルにクローンしてください。
+
 ## ②ブラウザの設定
-![ブラウザの設定方法]([https://github-production-user-asset-6210df.s3.amazonaws.com/232539745/640638490-f52603c6-4249-4db7-9bf9-3541162d954b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260825%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260825T023215Z&X-Amz-Expires=300&X-Amz-Signature=53ceb26c6c9a5883ea85ec4e6235e6c5c80ac7d1c2cfbd6e81ed2feeb45b3b2a&X-Amz-SignedHeaders=host&response-content-type=image%2Fpng](https://private-user-images.githubusercontent.com/232539745/640638490-f52603c6-4249-4db7-9bf9-3541162d954b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc2MjU5MDYsIm5iZiI6MTc4NzYyNTYwNiwicGF0aCI6Ii8yMzI1Mzk3NDUvNjQwNjM4NDkwLWY1MjYwM2M2LTQyNDktNGRiNy05YmY5LTM1NDExNjJkOTU0Yi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwODI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDgyNVQwMjQwMDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00ZjRjZjY0OWExMWYwOGQ4ZGEzZTg1OWVmMjRlOTAzYzBhZTU1ZTNlMzQ0YmE5YzI1MGZiYzRhZGIyNTYzNzZiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.mlheidDBNx-_BxA07z2x_vFz94vyOTzCFxAcHkNEs4g))
-Chromeの場合、上記の画像のような操作が必要です。まずデベロッパーモードをオンにしてください。次に表示されたオプションの中から**「パッケージ化されていない拡張機能を読み込む」**をクリックし、保存したフォルダを選択しましょう。これで拡張機能は利用可能な状態になりました。
+Chromeの場合、以下の手順で拡張機能を読み込みます。
+
+1. アドレスバーに `chrome://extensions` と入力して拡張機能管理画面にアクセスします。
+2. 右上の「デベロッパーモード」をオンにします。
+3. 表示されたオプションの中から「パッケージ化されていない拡張機能を読み込む」をクリック。
+4. ①でクローン(またはダウンロード)したフォルダを選択
+
+これで拡張機能は利用可能な状態になりました。
+
 # 問題が発生した場合
 このGithubリポジトリにIssueを置くか、制作者のSNSのDMなどに連絡していただけると助かります。
