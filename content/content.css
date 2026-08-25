@@ -1,0 +1,49 @@
+.sapuri-opt-badge {
+  position: absolute !important;
+  top: 50% !important;
+  left: 8px !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483646 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 22px !important;
+  height: 22px !important;
+  padding: 0 6px !important;
+  border-radius: 4px !important;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35) !important;
+  background: #4f9cf9 !important;
+  color: #ffffff !important;
+}
+
+.sapuri-opt-badge-host {
+  position: relative !important;
+}
+
+.sapuri-shortcut-toast {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 2147483647 !important;
+  padding: 10px 16px !important;
+  border-radius: 8px !important;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  border: 1px solid #2d3748 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  opacity: 0;
+  transition: opacity 0.2s ease !important;
+  pointer-events: none !important;
+}
+
+.sapuri-shortcut-toast.visible {
+  opacity: 1 !important;
+}

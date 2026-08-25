@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "\u30b9\u30bf\u30b5\u30d7\u6700\u9069\u5316",
+  "version": "1.2.1",
+  "description": "\u30b9\u30bf\u30c7\u30a3\u30b5\u30d7\u30ea\u5411\u3051\u6570\u5b57\u30ad\u30fc\u30b7\u30e7\u30fc\u30c8\u62e1\u5f35\u6a5f\u80fd",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://learn.studysapuri.jp/*",
+    "https://*.studysapuri.jp/*",
+    "https://eigosapuri.jp/*",
+    "https://*.eigosapuri.jp/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "\u30b9\u30bf\u30b5\u30d7\u6700\u9069\u5316",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://learn.studysapuri.jp/*",
+        "https://*.studysapuri.jp/*",
+        "https://eigosapuri.jp/*",
+        "https://*.eigosapuri.jp/*"
+      ],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

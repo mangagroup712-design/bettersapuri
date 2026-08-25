@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタサプ最適化</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <h1>スタサプ最適化</h1>
+    <label class="toggle">
+      <input type="checkbox" id="shortcutsEnabled">
+      <span>ショートカットキー</span>
+    </label>
+    <label class="toggle">
+      <input type="checkbox" id="showShortcutBadges">
+      <span>数字バッジ表示</span>
+    </label>
+    <div class="shortcuts">
+      <p class="shortcuts-title">ショートカット</p>
+      <p><kbd>1</kbd>〜<kbd>9</kbd> 選択肢を選択 / 解除</p>
+      <p><kbd>Enter</kbd> 回答確定</p>
+    </div>
+    <button type="button" id="openOptions" class="link-btn">詳細設定を開く</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

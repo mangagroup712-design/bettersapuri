@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタサプ最適化 - 設定</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>スタサプ最適化 設定</h1>
+      <p class="subtitle">数字キーで選択肢を操作するショートカット設定</p>
+    </header>
+
+    <section class="section">
+      <h2>機能の有効化</h2>
+      <label class="toggle-row">
+        <input type="checkbox" id="shortcutsEnabled">
+        <span>ショートカットキーを有効にする</span>
+      </label>
+      <label class="toggle-row">
+        <input type="checkbox" id="showShortcutBadges">
+        <span>選択肢に数字バッジを表示する</span>
+      </label>
+    </section>
+
+    <section class="section">
+      <h2>ショートカットキー</h2>
+      <table>
+        <thead>
+          <tr><th>キー</th><th>操作</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><kbd>1</kbd> 〜 <kbd>9</kbd></td><td>対応する選択肢を選択 / 選択解除</td></tr>
+          <tr><td><kbd>Enter</kbd></td><td>回答を確定</td></tr>
+        </tbody>
+      </table>
+      <p class="note">対象: <code>QuizMultipleChoice__Button_</code> クラスの button 要素。数字キーで <code>_isSelected_</code> クラスを付与/解除します。</p>
+    </section>
+
+    <footer class="footer">
+      <button type="button" id="saveBtn" class="btn">設定を保存</button>
+      <span id="status" class="status" aria-live="polite"></span>
+    </footer>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
