@@ -4,6 +4,7 @@ chrome.runtime.onInstalled.addListener(function () {
       chrome.storage.sync.set({
         shortcutsEnabled: true,
         showShortcutBadges: true,
+        skipExplanation: false,
       });
     }
   });

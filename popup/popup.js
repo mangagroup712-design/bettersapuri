@@ -1,6 +1,7 @@
 const toggles = {
   shortcutsEnabled: document.getElementById("shortcutsEnabled"),
   showShortcutBadges: document.getElementById("showShortcutBadges"),
+  skipExplanation: document.getElementById("skipExplanation"),
 };
 
 function loadSettings() {
@@ -8,10 +9,12 @@ function loadSettings() {
     {
       shortcutsEnabled: true,
       showShortcutBadges: true,
+      skipExplanation: false,
     },
     function (stored) {
       toggles.shortcutsEnabled.checked = stored.shortcutsEnabled !== false;
       toggles.showShortcutBadges.checked = stored.showShortcutBadges !== false;
+      toggles.skipExplanation.checked = stored.skipExplanation === true;
     }
   );
 }

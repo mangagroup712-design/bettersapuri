@@ -23,6 +23,10 @@
         <input type="checkbox" id="showShortcutBadges">
         <span>選択肢に数字バッジを表示する</span>
       </label>
+      <label class="toggle-row">
+        <input type="checkbox" id="skipExplanation">
+        <span>解説をスキップして次の問題へ自動移動する</span>
+      </label>
     </section>
 
     <section class="section">
@@ -36,7 +40,7 @@
           <tr><td><kbd>Enter</kbd></td><td>回答を確定</td></tr>
         </tbody>
       </table>
-      <p class="note">対象: <code>QuizMultipleChoice__Button_</code> クラスの button 要素。数字キーで <code>_isSelected_</code> クラスを付与/解除します。</p>
+      <p class="note">対象: <code>QuizMultipleChoice__Button_</code> クラスの button 要素。数字キーで <code>_isSelected_</code> クラスを付与/解除します。解説スキップを有効にすると、「次の問題へ」が表示されたときに Enter を自動送信します。</p>
     </section>
 
     <footer class="footer">

@@ -22,22 +22,27 @@
   let settings = {
     shortcutsEnabled: true,
     showShortcutBadges: true,
+    skipExplanation: false,
   };
 
   let cachedSelectedClass = null;
   let badgeObserver = null;
   let badgeRefreshTimer = null;
+  let autoNextTimer = null;
+  let autoNextButton = null;
+  let autoNextInProgress = false;
   let toastEl = null;
   let toastTimer = null;
 
   function loadSettings() {
     return new Promise(function (resolve) {
       chrome.storage.sync.get(
-        { shortcutsEnabled: true, showShortcutBadges: true },
+        { shortcutsEnabled: true, showShortcutBadges: true, skipExplanation: false },
         function (stored) {
           settings = {
             shortcutsEnabled: stored.shortcutsEnabled !== false,
             showShortcutBadges: stored.showShortcutBadges !== false,
+            skipExplanation: stored.skipExplanation === true,
           };
           resolve(settings);
         }
@@ -276,6 +281,65 @@
     return null;
   }
 
+  function isNextQuestionButton(btn) {
+    var label = getButtonLabel(btn);
+    return (
+      label.indexOf("次の問題へ") !== -1 ||
+      label.indexOf("次の問題") !== -1 ||
+      label.indexOf("次へ") !== -1 ||
+      label.indexOf("次に") !== -1 ||
+      label.indexOf("next") !== -1
+    );
+  }
+
+  function dispatchEnter(btn) {
+    btn.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "Enter",
+        code: "Enter",
+        keyCode: 13,
+        which: 13,
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+  }
+
+  function scheduleAutoNext() {
+    if (autoNextTimer !== null) return;
+    autoNextTimer = setTimeout(function () {
+      autoNextTimer = null;
+      if (!settings.skipExplanation) return;
+
+      if (findQuizChoiceButtons().length > 0) {
+        autoNextButton = null;
+        autoNextInProgress = false;
+        return;
+      }
+
+      var btn = findConfirmButton();
+      if (!btn || !isNextQuestionButton(btn)) {
+        if (!btn) autoNextButton = null;
+        autoNextInProgress = false;
+        return;
+      }
+      if (btn === autoNextButton || autoNextInProgress) return;
+
+      autoNextButton = btn;
+      autoNextInProgress = true;
+      setTimeout(function () {
+        if (settings.skipExplanation && btn.isConnected && isVisible(btn)) {
+          dispatchEnter(btn);
+        } else {
+          autoNextButton = null;
+        }
+        setTimeout(function () {
+          autoNextInProgress = false;
+        }, 500);
+      }, 50);
+    }, 100);
+  }
+
   function confirmAnswer() {
     var btn = findConfirmButton();
     if (btn) {
@@ -337,6 +401,7 @@
     badgeObserver = new MutationObserver(function () {
       cachedSelectedClass = null;
       scheduleBadgeRefresh();
+      scheduleAutoNext();
     });
     badgeObserver.observe(document.body, { childList: true, subtree: true, attributes: true });
   }
@@ -347,6 +412,10 @@
       badgeObserver = null;
     }
     clearTimeout(badgeRefreshTimer);
+    clearTimeout(autoNextTimer);
+    autoNextTimer = null;
+    autoNextButton = null;
+    autoNextInProgress = false;
     removeBadges();
   }
 
@@ -422,10 +491,13 @@
 
   function applyAll() {
     unbindKeyboard();
-    if (settings.shortcutsEnabled) {
+    if (settings.shortcutsEnabled || settings.skipExplanation) {
       startBadgeObserver();
-      scheduleBadgeRefresh();
-      bindKeyboard();
+      if (settings.shortcutsEnabled) {
+        scheduleBadgeRefresh();
+        bindKeyboard();
+      }
+      scheduleAutoNext();
     } else {
       stopBadgeObserver();
     }
@@ -448,6 +520,9 @@
     }
     if (changes.showShortcutBadges) {
       settings.showShortcutBadges = changes.showShortcutBadges.newValue !== false;
+    }
+    if (changes.skipExplanation) {
+      settings.skipExplanation = changes.skipExplanation.newValue === true;
     }
     applyAll();
   });
